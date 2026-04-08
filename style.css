@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=TASA+Explorer:wght@400..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+
+body
+{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(127, 127, 255);
+    overflow: hidden;
+}
+p, h1, h2{
+    -webkit-hyphens: auto;
+  hyphens: auto;
+
+}
+
+h1
+{
+    margin: 0;
+    padding: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 15vh;
+    color: #fff;
+}
+h1 span{
+    font-family: 'Lato', sans-serif;
+    display: inline-block;
+    transition: 0.6s;
+    animation: bounce 0.5s ease-in-out infinite alternate;
+    position: relative;
+    text-shadow: 
+    0 0.2vh 0 #ccc,
+    0 0.4vh 0 #ccc,
+    0 0.6vh 0 #ccc,
+    0 0.8vh 0 #ccc,
+    0 1vh 0 #ccc,
+    0 1.2vh 0 #ccc,
+    0 2.5vh 2.5vh #000;
+    /* 0 1px 0 #ccc,
+    0 2px 0 #ccc,
+    0 3px 0 #ccc,
+    0 4px 0 #ccc,
+    0 5px 0 #ccc,
+    0 6px 0 #ccc,
+    0 7px 0 #ccc,
+    0 8px 0 #ccc,
+    0 15px 15px #000; */
+}
+h1 span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+h1 span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+h1 span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+h1 span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+h1 span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+h1 span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+h1 span:nth-child(8) {
+    animation-delay: 0.7s;
+}
+h1 span:nth-child(9) {
+    animation-delay: 0.8s;
+}
+h1:hover{
+    cursor: default;
+}
+@keyframes bounce {
+    0%{top: 0px;}
+    20%{top: -2px;}
+    40%{top: -4px;}
+    60%{top: -6px;}
+    80%{top: -8px;}
+    100% {top: -10px;}
+}
+
+
+
+#map
+{
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    height: 79vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+
+#carte
+{
+    margin: auto;
+    width: 50%;
+    position: relative;
+    display: flex;
+}
+#carte svg{
+    height: 100%;
+    margin: auto;
+    filter: drop-shadow(0 0 5px rgb(127,255,127));
+}
+.arrondissement
+{
+    fill: #363d3c;
+    fill-opacity: 1;
+    stroke:white;
+    stroke-opacity: 1;
+    stroke-width:0.5;
+    stroke-miterlimit: 3.97446823;
+    stroke-dasharray: none;
+}
+.arrondissement:hover
+{
+    fill: #888d8c;
+    cursor: pointer;
+}
+.arrondissement.active
+{
+    fill: #7c8281;
+    cursor: pointer;
+}
+.number
+{
+    opacity: 0.75;
+    cursor: default;
+    fill:#fff;
+    font-size:30px;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+}
+.lieu{
+    fill: #fff;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+.lieu.active{
+    opacity: 1;
+    display: block;
+    visibility: visible;
+}
+
+
+#trait {
+    width: 1px;
+    height: 50%;
+    margin: auto;
+    background-color: #FFFAE1;
+    box-shadow: 3px 3px 2px black;
+}
+
+
+#infos
+{
+    margin: 0;
+    width: 50%;
+    position: relative;
+    display: flex;
+}
+.carousel{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    overflow: hidden;
+}
+.carousel.is-active{
+    opacity: 1;
+}
+path.is-active{
+    fill: #535958;
+}
+.carousel button{
+    position: absolute;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 5vh;
+    z-index: 2;
+    cursor: pointer;
+    color: #fff;
+    text-shadow:0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc;
+    transform: translateY(-50%);
+    top: 47%;
+    visibility: hidden;
+}
+.carousel.is-active button{
+    visibility: visible;
+}
+#prev {
+    left: 40px;
+}
+#next {
+    right: 40px;
+}
+.carousel ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.slide {
+    position: absolute;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    height: 65%;
+    width: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+.slide.active {
+    visibility: visible;
+    opacity: 1;
+}
+.slide img {
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    width: 90%;
+    border-radius: 15px;
+    border: 2px solid black;
+    filter: drop-shadow(0 0 5px rgb(127,255,127));
+}
+.slide p {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    text-shadow:0 1px 0 #ccc;
+    font-size: 3vh;
+}
+
+@media (min-aspect-ratio: 8.5/4) {
+    #carte{
+        height: 80vh; 
+    }
+}
+@media (max-aspect-ratio: 5/4) {
+    #map{
+        flex-direction: column;
+        align-items: center;
+    }
+    #trait{
+        height: 1px;
+        width: 50%;
+    }
+    #carte, #infos{ 
+        height: 40vh;
+        width: 100%;
+    }
+    .slide{
+        height: 80%;
+    }
+}
+@media (min-aspect-ratio:3/4) and (max-aspect-ratio: 5/4){
+    .slide img{
+        height: 70%;
+        width: auto;
+    }
+}
+@media (max-aspect-ratio: 3/4) {
+    h1{
+        font-size: 10vh;
+    }
+    .slide img{
+        width: 90%;
+    }
+}
+
